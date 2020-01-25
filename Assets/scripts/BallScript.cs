@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,5 +34,17 @@ public class BallScript : MonoBehaviour
             Rigidbody.AddForce(0, 0, power); //move back
         }
         
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag.Equals("finish"))
+        {
+            Debug.Log("win!");   
+        }
+        else if (!other.gameObject.tag.Equals(this.tag))
+        {
+            Debug.Log("Lose!");
+        }
     }
 }
